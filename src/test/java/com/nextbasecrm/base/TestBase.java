@@ -6,6 +6,8 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.nextbasecrm.Utilities.BrowserUtils;
 import com.nextbasecrm.Utilities.ConfigurationReader;
 import com.nextbasecrm.Utilities.Driver;
+import com.nextbasecrm.pages.ActivityStreamPage;
+import com.nextbasecrm.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -39,6 +41,8 @@ public abstract class TestBase {
     protected Select select;
 
     protected BasePage basePage;
+    protected LoginPage loginPage;
+    protected ActivityStreamPage activityStreamPage;
 
 
     @BeforeMethod
@@ -47,7 +51,7 @@ public abstract class TestBase {
         report = new ExtentReports();
         String path = System.getProperty("user.dir") +"/test-output/report.html";
         htmlReporter = new ExtentHtmlReporter(path);
-        htmlReporter.config().setReportName("Vytrack Automated Tests");
+        htmlReporter.config().setReportName("Bitrix24 Automated Tests");
         report.attachReporter(htmlReporter);
         report.setSystemInfo("Environment", "QA");
         report.setSystemInfo("Browser", ConfigurationReader.getProperty("browser"));
@@ -66,6 +70,10 @@ public abstract class TestBase {
         password = ConfigurationReader.getProperty("password");
 
         driver.get(url);
+
+        basePage = new ActivityStreamPage();
+        loginPage = new LoginPage();
+        activityStreamPage = new ActivityStreamPage();
 
 
 
@@ -86,7 +94,13 @@ public abstract class TestBase {
         }
 
 
-        Driver.closeDriver();
+//        Driver.closeDriver();
+        /*it is not going to take pictures for soft assertion fails if put this softAssert.assertAll();
+        in after method.
+        If you want to take screenshot, you need to put this softAssert.assertAll(); after each line
+        then it will be like hard assertion
+         */
+
         softAssert.assertAll();
     }
 
