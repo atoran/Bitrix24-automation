@@ -30,6 +30,9 @@ public class LoginTest extends TestBase {
         test.info("Clicking on SelectDocFromBitrix24");
         activityStreamPage.SelectDocFromBitrix24.click();
 
+        System.out.println("my name");
+        System.out.println("my last name");
+
     }
 
 }

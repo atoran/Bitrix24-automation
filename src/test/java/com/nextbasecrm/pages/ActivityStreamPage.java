@@ -19,4 +19,6 @@ public class ActivityStreamPage extends BasePage {
 
     @FindBy(xpath = "(//span[text() ='Select document from Bitrix24'])[1]")
     public WebElement SelectDocFromBitrix24;
+
+
 }
