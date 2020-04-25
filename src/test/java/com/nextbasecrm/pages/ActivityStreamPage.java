@@ -12,8 +12,11 @@ public class ActivityStreamPage extends BasePage {
     @FindBy(id = "bx-b-uploadfile-blogPostForm")
     public WebElement uploadIcon;
 
-    @FindBy(xpath = "//div[@class='diskuf-uploader']")
-    public WebElement UploadFilesAndImages;
+    @FindBy(xpath = "(//div[@class='diskuf-uploader'])[1]")
+    public WebElement uploadFilesAndImages;
 
 
+
+    @FindBy(xpath = "(//span[text() ='Select document from Bitrix24'])[1]")
+    public WebElement SelectDocFromBitrix24;
 }
